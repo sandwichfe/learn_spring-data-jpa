@@ -1,0 +1,40 @@
+spring:
+  # mysql 连接配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 使用druid连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 配置druid连接池
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 30000
+    filters: stat
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+
+  #配置jpa
+  jpa:
+    #是否显示sql 语句
+    show-sql: true
+    format_sql: true
+    # 更新数据库表结构
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      encoding: utf-8
+
+logging:
+  level:
+    # sql 参数打印
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+
